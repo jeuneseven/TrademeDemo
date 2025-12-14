@@ -67,11 +67,11 @@ struct LatestListView: View {
     // MARK: - Loaded State
     private func loadedView(_ list: [LatestListItem]) -> some View {
         List(list) { item in
-            Button(action: {
+            Button {
                 selectedListingTitle = item.title ?? "Unknown"
-                placeholderAlertTitle = "Listing Details"
+                placeholderAlertTitle = listViewModel.listingDetailsAlertTitle
                 showingPlaceholderAlert = true
-            }) {
+            } label: {
                 LatestListItemView(viewModel: LatestListItemViewModel(item: item))
                     .contentShape(Rectangle())
             }
@@ -80,7 +80,7 @@ struct LatestListView: View {
             .listRowSeparator(.hidden)
             .accessibilityElement(children: .combine)
             .accessibilityAddTraits(.isButton)
-            .accessibilityHint("Double tap to view listing details")
+            .accessibilityHint(listViewModel.listItemAccessibilityHint)
         }
         .listStyle(.plain)
     }
@@ -88,11 +88,11 @@ struct LatestListView: View {
     // MARK: - Error State
     private func errorView(_ errorMessage: String) -> some View {
         VStack(spacing: 16) {
-            Image(systemName: "exclamationmark.triangle.fill")
-                .font(.system(size: 48))
+            Image(systemName: listViewModel.errorImageName)
+                .font(.system(size: listViewModel.errorImageSize))
                 .foregroundStyle(Constants.Colors.tasmanBlue)
             
-            Text("Failed to load listings")
+            Text(listViewModel.errorTitle)
                 .font(.headline)
                 .foregroundStyle(Constants.Colors.textDark)
             
@@ -101,16 +101,16 @@ struct LatestListView: View {
                 .foregroundStyle(Constants.Colors.textLight)
                 .multilineTextAlignment(.center)
             
-            Button(action: {
+            Button {
                 Task {
                     await listViewModel.retry()
                 }
-            }) {
-                Text("Try Again")
+            } label: {
+                Text(listViewModel.retryButtonText)
                     .fontWeight(.semibold)
                     .foregroundStyle(.white)
                     .frame(maxWidth: .infinity)
-                    .padding(.vertical, 12)
+                    .padding(.vertical, listViewModel.buttonVerticalPadding)
                     .background(Constants.Colors.tasmanBlue)
                     .cornerRadius(Constants.Design.buttonCornerRadius)
             }
@@ -125,24 +125,24 @@ struct LatestListView: View {
     
     // MARK: - Toolbar Buttons
     private var searchButton: some View {
-        Button(action: {
-            placeholderAlertTitle = "Search"
+        Button {
+            placeholderAlertTitle = listViewModel.searchAlertTitle
             showingPlaceholderAlert = true
-        }) {
-            Image(systemName: "magnifyingglass")
-                .accessibilityIdentifier("searchButton")
-                .accessibilityLabel(Constants.Strings.searchAccessibilityLabel)
+        } label: {
+            Image(systemName: listViewModel.searchImage)
+                .accessibilityIdentifier(listViewModel.searchAccessibilityIdentifier)
+                .accessibilityLabel(listViewModel.searchAccessibilityLabel)
         }
     }
 
     private var cartButton: some View {
-        Button(action: {
-            placeholderAlertTitle = "Shopping Cart"
+        Button {
+            placeholderAlertTitle = listViewModel.cartAlertTitle
             showingPlaceholderAlert = true
-        }) {
-            Image(systemName: "cart")
-                .accessibilityIdentifier("cartButton")
-                .accessibilityLabel(Constants.Strings.cartAccessibilityLabel)  
+        } label: {
+            Image(systemName: listViewModel.cartImage)
+                .accessibilityIdentifier(listViewModel.cartAccessibilityIdentifier)
+                .accessibilityLabel(listViewModel.cartAccessibilityLabel)
         }
     }
 }

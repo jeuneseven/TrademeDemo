@@ -17,6 +17,34 @@ class LatestListViewModel {
         case error(String)
     }
     
+    // UI Text Constants
+    let navigationTitle = "Browse"
+    let searchAlertTitle = "Search"
+    let searchImage = "magnifyingglass"
+    let searchAccessibilityIdentifier = "searchButton"
+    let searchAccessibilityLabel = "Search listings"
+    let cartAlertTitle = "Shopping cart"
+    let cartImage = "cart"
+    let cartAccessibilityIdentifier = "cartButton"
+    let cartAccessibilityLabel = "Shopping cart"
+    let listItemAccessibilityHint = "Double tap to view listing details"
+    let listingDetailsAlertTitle = "Listing Details"
+    
+    // Loading State Constants
+    let loadingMessage = "Loading listings..."
+    let loadingStackSpacing: CGFloat = 16
+    let loadingProgressScale: CGFloat = 1.5
+    
+    // Error State Constants
+    let errorTitle = "Failed to load listings"
+    let errorImageName = "exclamationmark.triangle.fill"
+    let errorImageSize: CGFloat = 48
+    let errorStackSpacing: CGFloat = 16
+    let errorViewPadding: CGFloat = 20
+    let retryButtonText = "Try Again"
+    let retryButtonTopPadding: CGFloat = 16
+    let buttonVerticalPadding: CGFloat = 12
+    
     var state: State = .idle
     
     private let service: DiscoverService

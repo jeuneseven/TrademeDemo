@@ -8,23 +8,31 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var selectedTab = "Discover"
+    @State private var selectedTab = Constants.Strings.discoverTab
     
     var body: some View {
         TabView(selection: $selectedTab) {
-            Tab("Discover", image: "search", value: "Discover") {
+            Tab(Constants.Strings.discoverTab,
+                image: Constants.Design.discoverTabImage,
+                value: Constants.Strings.discoverTab) {
                 LatestListView()
             }
             
-            Tab("Notifications", systemImage: "bell", value: "Notifications") {
+            Tab(Constants.Strings.notificationsTab,
+                systemImage: Constants.Design.notificationTabImage,
+                value: Constants.Strings.notificationsTab) {
                 OtherTabView(tab: .notifications)
             }
             
-            Tab("Watchlist", image: "watchlist", value: "Watchlist") {
+            Tab(Constants.Strings.watchlistTab,
+                image: Constants.Design.watchlistTabImage,
+                value: Constants.Strings.watchlistTab) {
                 OtherTabView(tab: .watchlist)
             }
             
-            Tab("My Trade Me", image: "profile-16", value: "My Trade Me") {
+            Tab(Constants.Strings.myTradeMeTab,
+                image: Constants.Design.myTradeMeTabImage,
+                value: Constants.Strings.myTradeMeTab) {
                 OtherTabView(tab: .mytrademe)
             }
         }

@@ -22,6 +22,11 @@ struct Constants {
         static let listItemImageSize: CGFloat = 120
         static let listItemImageCornerRadius: CGFloat = 8
         
+        static let discoverTabImage = "search"
+        static let notificationTabImage = "bell"
+        static let watchlistTabImage = "watchlist"
+        static let myTradeMeTabImage = "profile-16"
+        
         // Corner Radius
         static let buttonCornerRadius: CGFloat = 8
         
@@ -33,8 +38,6 @@ struct Constants {
     struct Strings {
         // Navigation
         static let navigationTitle = "Browse"
-        static let searchAccessibilityLabel = "Search listings"
-        static let cartAccessibilityLabel = "Shopping cart"
         
         // Tab Titles
         static let discoverTab = "Discover"
