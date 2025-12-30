@@ -7,7 +7,35 @@
 		<key>TradeMeDemo.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>TradeMeDemoTests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+		<key>TradeMeDemoUITests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>D83CC5982EEA7E110091CCB3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D83CC5A82EEA7E130091CCB3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D83CC5B22EEA7E130091CCB3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
